@@ -5,11 +5,11 @@
   "license": "MIT",
   "scripts": {
     "test": "jest",
+    "test:fix": "jest --config jest.fix.config.js",
     "test:workaround": "jest --config jestworkaround.config.js"
   },
   "devDependencies": {
     "jest": "^24.9.0",
-    "lerna": "^3.15.0",
-    "test": "jest"
+    "lerna": "^3.15.0"
   }
 }

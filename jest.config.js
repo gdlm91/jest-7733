@@ -1,6 +1,4 @@
 module.exports = {
-    rootDir: '.',
-    "projects": [
-        "<rootDir>/packages/*"
-    ]
-}
+  rootDir: ".",
+  projects: ["<rootDir>/packages/*"]
+};

@@ -68,10 +68,42 @@ info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this comm
 
 ## Fix
 
+Specifying the jest configuration of each package will force Jest to NOT run test from Root, and not to try running
+tests in projects that don't have a configuration file.
+
+It will also use the root folder as the rootDir for dumping any coverage report
+
+```bash
+$ cat jest.fix.config.js
+module.exports = {
+   module.exports = {
+    rootDir: ".",
+    projects: ["<rootDir>/packages/*/jest.config.js"]
+  };
+}
+```
+
+```bash
+➜ yarn test:fix
+yarn run v1.17.3
+$ jest --config jest.fix.config.js
+ PASS  packages/c/some.test.js
+ PASS  packages/a/some.test.js
+
+Test Suites: 2 passed, 2 total
+Tests:       2 passed, 2 total
+Snapshots:   0 total
+Time:        0.924s, estimated 1s
+Ran all test suites in 2 projects.
+✨  Done in 1.52s.
+```
+
+## Work around
+
 Specify the specific projects which need to be run:
 
 ```bash
-$ cat jestworkaround.config.js 
+$ cat jestworkaround.config.js
 module.exports = {
     rootDir: ".",
     "projects": [
@@ -95,4 +127,3 @@ Time:        1.223s
 Ran all test suites in 2 projects.
 ✨  Done in 1.93s.
 ```
-
